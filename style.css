@@ -1,0 +1,31 @@
+
+
+.body {
+    background-color: rgb(74, 74, 74);
+}
+
+
+.contenedor {
+    background-color: rgb(74, 74, 74);
+
+
+}
+
+
+
+.contenedor-productos {
+    background-color: rgb(249, 249, 249);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.seccion {
+    padding: 0px;
+}
+
+
+.btn {
+    width: 80%;
+}
