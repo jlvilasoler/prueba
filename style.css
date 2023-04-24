@@ -1,31 +1,76 @@
 
+/* * Selector universal de reseteo de estilos por default del html */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    color: rgba(223, 223, 223, 0.932);
+    transition: 0.4s;
+    padding: 0px;
+  }
+  
+
 
 .body {
     background-color: rgb(74, 74, 74);
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
 }
 
 
 .contenedor {
     background-color: rgb(74, 74, 74);
-
-
+    text-align: center;
+    
 }
-
 
 
 .contenedor-productos {
     background-color: rgb(249, 249, 249);
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    text-align: center;
 }
 
 
-.seccion {
-    padding: 0px;
+.articulo {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px;
+
 }
 
+.imagenes {
+    width: 65%;
+}
 
-.btn {
-    width: 80%;
+.boton-comprar {
+    color: rgb(253, 253, 253);
+    background-color: rgb(212, 16, 16);
+    width: 70%;
+    height: 50px;
+    font-size: 25px;
+    
+}
+
+.articulo h1 {
+    font-size: 25px;
+}
+
+.articulo h2 {
+    font-size: 20px;
+}
+
+.articulo h3 {
+    font-size: 31px;
+}
+
+.articulo p {
+    font-size: 40px;
 }

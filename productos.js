@@ -121,12 +121,22 @@ const productos = [{
 ];
 
 
+console.log(productos);
+
+let carrito = [];
+
+
+
+
+
+
+
 // 3-
 const productosContenedor = document.getElementById("productos");
 
 // 2- 
 function crearProducto(producto) {
-    const articulo = document.createElement("article"); //con esto creamos el nodo , como creamos los nodos? con INNER o con esto "un tag"
+    const articulo = document.createElement("articulo"); //con esto creamos el nodo , como creamos los nodos? con INNER o con esto "un tag"
 
 
 function comprarProducto(e) {
@@ -134,11 +144,17 @@ function comprarProducto(e) {
 
 }
 
+function agregarACarrito(producto){
+    carrito.push(producto);
+    console.log(carrito);
+}
+
+
 //4.a
 const foto = document.createElement("img");
-const nombre = document.createElement("h2");
+const nombre = document.createElement("h1");
 const descripcion = document.createElement("h2");
-const marca = document.createElement("p");
+const marca = document.createElement("h3");
 const precio = document.createElement("p");
 const comprar = document.createElement("button");
 
@@ -153,6 +169,9 @@ const textoMarca = document.createTextNode(producto.marca)//nodo de texto
 marca.appendChild(textoMarca);//Se agrega nombre al nodo textoNombre 
 
 
+//Al precio le agregamos el signo de $:
+precio.innerHTML = `
+<p>$ ${producto.precio}</p>`;
 
 
 //5.b : Otra forma de agregar texto a las etiquetas es con:
@@ -166,11 +185,14 @@ foto.className = "imagenes";
 
 
 //boton comprar:
-comprar.textContent = "Comprar";
+comprar.textContent = "COMPRAR";
+
 comprar.addEventListener("click", comprarProducto);
 
+
+
 //En el boton comprar asociarlo a cada ID de Producto
-articulo.dataset.producto = producto.alt;
+nombre.dataset.producto = producto.alt;
 
 
 //4.b
@@ -182,12 +204,26 @@ articulo.appendChild(precio);
 articulo.appendChild(comprar);
 
 productosContenedor.appendChild(articulo);
+
+
+//agrego class a boton comprar
+const boton = document.createElement('button');
+comprar.classList.add('boton-comprar');
+comprar.id = `${producto.id}`
+
+
+//agrego class a boton comprar
+const article = document.createElement('articulo');
+articulo.classList.add('articulo');
+articulo.id = `${producto.id}`
+
+
+
 }
+
+
 
 // 1- 
 productos.forEach(crearProducto);
 
 
-const boton = document.createElement('button');
-boton.classList.add('misEstilos');
-boton.id = 'miId'
