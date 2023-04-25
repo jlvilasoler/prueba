@@ -127,17 +127,29 @@ let carrito = [];
 
 
 
-const botonComprar = document.querySelectorAll(".boton-comprar`");
-botonComprar.forEach(el => {
-    el.addEventListener("click", (e) => {
-        agregarACarrito(e.target.id)
-    });
 
 
+
+
+// 3-
+const productosContenedor = document.getElementById("productos");
 
 // 2- 
 function crearProducto(producto) {
     const articulo = document.createElement("articulo"); //con esto creamos el nodo , como creamos los nodos? con INNER o con esto "un tag"
+
+
+function comprarProducto(e) {
+    alert(`Gracias por comprar el producto ${e.target.parentNode.dataset.producto}`);
+
+}
+
+function agregarACarrito(producto){
+    carrito.push(producto);
+    console.log(carrito);
+}
+
+
 //4.a
 const foto = document.createElement("img");
 const nombre = document.createElement("h1");
@@ -146,15 +158,15 @@ const marca = document.createElement("h3");
 const precio = document.createElement("p");
 const comprar = document.createElement("button");
 
+//5.a Con esto agregamos la informacion de texto que queremos que aparezca en cada etiqueta
+const textoNombre = document.createTextNode(producto.articulo)//nodo de texto
+nombre.appendChild(textoNombre);//Se agrega nombre al nodo textoNombre 
 
+const textoPrecio = document.createTextNode(producto.precio)//nodo de texto
+precio.appendChild(textoPrecio);//Se agrega nombre al nodo textoNombre 
 
-
-function comprarProducto(e) {
-    alert(`Gracias por comprar el producto ${e.target.parentNode.dataset.producto}`);
-
-}
-
-
+const textoMarca = document.createTextNode(producto.marca)//nodo de texto
+marca.appendChild(textoMarca);//Se agrega nombre al nodo textoNombre 
 
 
 
@@ -171,19 +183,29 @@ descripcion.textContent = producto.descripcion;
 foto.src = producto.foto; //agregamos imagenes en cada elemento
 foto.alt = producto.alt; //texto alternativo para accesivilidad
 foto.className = "imagenes";
-}           
 
 
 
-function agregarACarrito(id){
-    let prodEncontrado = productos.find(prod => prod.id === parseInt(id));
+//boton comprar:
+comprar.textContent = "COMPRAR";
 
-    carrito.push(prodEncontrado);
-    console.log(carrito);
-    
-}
+comprar.addEventListener("click", comprarProducto);
 
 
+
+//En el boton comprar asociarlo a cada ID de Producto
+nombre.dataset.producto = producto.alt;
+
+
+//4.b
+articulo.appendChild(foto);
+articulo.appendChild(nombre);
+articulo.appendChild(descripcion);
+articulo.appendChild(marca);
+articulo.appendChild(precio);
+articulo.appendChild(comprar);
+
+productosContenedor.appendChild(articulo);
 
 
 //agrego class a boton comprar
@@ -197,48 +219,10 @@ const article = document.createElement('articulo');
 articulo.classList.add('articulo');
 articulo.id = `${producto.id}`
 
+//Definir variable producto
 
 
-
-})
-
-
-
-
-
-
-
-
-
-
-
-//boton comprar:
-comprar.textContent = "COMPRAR";
-
-comprar.addEventListener("click", comprarProducto);
-
-
-
-
-
-//4.b
-articulo.appendChild(foto);
-articulo.appendChild(nombre);
-articulo.appendChild(descripcion);
-articulo.appendChild(marca);
-articulo.appendChild(precio);
-articulo.appendChild(comprar);
-articulo.appendChild(articulo);
-
-
-productosContenedor.appendChild(articulo);
-
-
-
-
-//En el boton comprar asociarlo a cada ID de Producto
-nombre.dataset.producto = producto.alt;
-
+}
 
 
 
