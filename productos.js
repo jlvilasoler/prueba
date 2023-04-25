@@ -144,8 +144,19 @@ function comprarProducto(e) {
 
 }
 
-function agregarACarrito(producto){
-    carrito.push(producto);
+const botonComprar = document.querySelectorall(".boton-comprar`");
+botonComprar.forEach(el => {
+    el.addEventListener("click", (e) => {
+        agregarACarrito(e.target.id)
+    });
+})
+}
+
+
+function agregarACarrito(id){
+    let prodEncontrado = productos.find(prod => prod.id === parseInt(id));
+
+    carrito.push(prodEncontrado);
     console.log(carrito);
 }
 
@@ -190,7 +201,6 @@ comprar.textContent = "COMPRAR";
 comprar.addEventListener("click", comprarProducto);
 
 
-
 //En el boton comprar asociarlo a cada ID de Producto
 nombre.dataset.producto = producto.alt;
 
@@ -202,6 +212,7 @@ articulo.appendChild(descripcion);
 articulo.appendChild(marca);
 articulo.appendChild(precio);
 articulo.appendChild(comprar);
+
 
 productosContenedor.appendChild(articulo);
 
@@ -219,11 +230,9 @@ articulo.id = `${producto.id}`
 
 
 
-}
+
 
 
 
 // 1- 
 productos.forEach(crearProducto);
-
-
